@@ -1,0 +1,4 @@
+.config/nvim/undo/
+.config/hub
+.config/nvim/plugged/
+.config/nvim/sessions/
