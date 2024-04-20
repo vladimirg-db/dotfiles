@@ -6,6 +6,8 @@ export EDITOR='nvim'
 eval $(/opt/homebrew/bin/brew shellenv)
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+alias vim=nvim
+
 if type brew &>/dev/null; then
 	FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 	autoload -Uz compinit
@@ -19,6 +21,5 @@ export NVM_DIR="$HOME/.nvm"
 export JAVA_HOME=/Users/vladimir.golubev/Library/Java/JavaVirtualMachines/azul-17.0.10/Contents/Home
 export PATH="$PATH:$HOME/Library/Application Support/Coursier/bin"
 export PATH="$PATH:$HOME/usr/bin"
-
 
 complete -W "$(kubectl config get-contexts -o name | sed 's/$/ /' | tr '\n' ' ')" lens
