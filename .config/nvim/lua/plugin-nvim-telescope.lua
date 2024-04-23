@@ -7,13 +7,24 @@ require("telescope").setup({
 			case_mode = "smart_case",
 		},
 	},
+	pickers = {
+		find_files = {
+			hidden = true,
+		},
+		live_grep = {
+			additional_args = function(opts)
+				return { "--hidden", "--smart-case" }
+			end,
+		},
+		live_grep = {
+			additional_args = { "--hidden", "--smart-case" },
+		},
+	},
 })
 
 require("telescope").load_extension("fzf")
 
 vim.cmd([[
-nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep find_command=rg,--ignore,--hidden,--files<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+    nnoremap <leader>ff <cmd>Telescope find_files<cr>
+    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 ]])

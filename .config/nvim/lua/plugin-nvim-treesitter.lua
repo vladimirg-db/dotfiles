@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "go", "lua", "python" },
+	ensure_installed = { "scala", "java", "lua", "python" },
 
 	sync_install = false,
 
