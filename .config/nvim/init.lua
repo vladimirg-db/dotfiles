@@ -49,9 +49,8 @@ require("undo")
 
 require("plugin-vim-plug")
 
+require("lsp")
 require("plugin-nvim-comment")
-require("Plugin-nvim-mason")
-require("Plugin-nvim-metals")
 require("plugin-nvim-telescope")
 require("plugin-nvim-treesitter")
 require("plugin-nvim-trouble")

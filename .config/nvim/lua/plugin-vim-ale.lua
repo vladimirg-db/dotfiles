@@ -1,6 +1,8 @@
 vim.cmd([[
     let g:ale_linters = {
     \    'java': ['checkstyle'],
+    \    'jsonnet': ['jsonnet-lint'],
+    \    'proto': ['buf-lint'],
     \    'scala': ['scalastyle'],
     \}
 
@@ -9,8 +11,9 @@ vim.cmd([[
 
     let g:ale_fixers = {
     \    '*': ['remove_trailing_lines', 'trim_whitespace'],
-    \    'scala': ['scalafmt'],
+    \    'jsonnet': ['jsonnetfmt'],
     \    'lua': ['stylua'],
+    \    'scala': ['scalafmt'],
     \}
 
     nnoremap <silent> <leader>f :ALEFix<CR>
