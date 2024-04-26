@@ -19,6 +19,7 @@ vim.cmd([[
     nnoremap <silent> <leader>f :ALEFix<CR>
 
     let g:ale_scala_scalafmt_options = '--config /Users/vladimir.golubev/universe/bazel/scalafmt/scalafmt.conf'
+    let g:ale_scala_scalastyle_options = '--warnings true'
 
     let g:ale_use_neovim_diagnostics_api = 1
 ]])
