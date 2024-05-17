@@ -1,6 +1,6 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="avit"
-plugins=(bazel colored-man-pages fd git github scala vi-mode)
+plugins=(bazel colored-man-pages fd fzf git github scala vi-mode zsh-fzf-history-search)
 source $ZSH/oh-my-zsh.sh
 export EDITOR='nvim'
 eval $(/opt/homebrew/bin/brew shellenv)

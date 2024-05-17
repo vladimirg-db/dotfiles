@@ -4,6 +4,9 @@ require("mason-lspconfig").setup()
 local cmp = require("cmp")
 
 cmp.setup({
+	completion = {
+		autocomplete = false,
+	},
 	snippet = {
 		expand = function(args)
 			vim.fn["vsnip#anonymous"](args.body)
@@ -13,33 +16,37 @@ cmp.setup({
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
-	mapping = {
-		["<C-u>"] = cmp.mapping.scroll_docs(-4),
-		["<C-d>"] = cmp.mapping.scroll_docs(4),
-		["<Esc>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
+	mapping = cmp.mapping.preset.insert({
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete({}),
+		["<CR>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		}),
+		["<C-e>"] = cmp.mapping.abort(),
 		["<Tab>"] = cmp.mapping(function(fallback)
-			local col = vim.fn.col(".") - 1
-
 			if cmp.visible() then
-				cmp.select_next_item({ select = true })
-			elseif col == 0 or vim.fn.getline("."):sub(col, col):match("%s") then
-				fallback()
-			else
-				cmp.complete()
-			end
-		end, { "i", "s" }),
-		["<C-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item({ select = true })
+				cmp.select_next_item()
+			elseif vim.snippet.active({ direction = 1 }) then
+				vim.snippet.jump(1)
 			else
 				fallback()
 			end
 		end, { "i", "s" }),
-	},
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif vim.snippet.active({ direction = -1 }) then
+				vim.snippet.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp", max_item_count = 20, trigger_characters = { ".", "::", "->" } },
-		{ name = "vsnip", max_item_count = 20 },
+		{ name = "nvim_lsp" },
+		{ name = "vsnip" },
 	}, {
 		{ name = "buffer" },
 	}),
@@ -60,6 +67,13 @@ cmp.setup.cmdline(":", {
 	matching = { disallow_symbol_nonprefix_matching = false },
 })
 
+require("lspconfig").clangd.setup({
+	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+	cmd = {
+		"clangd",
+		"--offset-encoding=utf-16",
+	},
+})
 require("lspconfig").lua_ls.setup({
 	settings = {
 		Lua = {
@@ -89,15 +103,17 @@ metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
 local function omnifunc(buf)
 	vim.bo[buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-	local opts = { buffer = buf }
+	local opts = { buffer = buf, noremap = true, silent = true }
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-	vim.keymap.set("n", "rn", vim.lsp.buf.rename, opts)
-	vim.keymap.set("n", "td", vim.lsp.buf.type_definition, opts)
-	vim.keymap.set("n", "<C-k>", vim.lsp.buf.hover, opts)
-	vim.keymap.set("n", "<leader>r", vim.lsp.buf.references, opts)
-	vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, opts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+	vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
+	vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
