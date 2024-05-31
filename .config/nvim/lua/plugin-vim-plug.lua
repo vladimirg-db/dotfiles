@@ -1,7 +1,7 @@
 vim.cmd([[
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'arcticicestudio/nord-vim'
+Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
 Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
