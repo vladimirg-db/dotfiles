@@ -1,10 +1,10 @@
 for _, v in ipairs({
-	{ "<leader>xx", "<cmd>Trouble<cr>" },
-	{ "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>" },
-	{ "<leader>xd", "<cmd>Trouble document_diagnostics<cr>" },
-	{ "<leader>xl", "<cmd>Trouble loclist<cr>" },
-	{ "<leader>xq", "<cmd>Trouble quickfix<cr>" },
-	{ "gR", "<cmd>Trouble lsp_references<cr>" },
+	{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>" },
+	{ "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>" },
+	{ "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>" },
+	{ "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>" },
+	{ "<leader>xL", "<cmd>Trouble loclist toggle<cr>" },
+	{ "<leader>xQ", "<cmd>Trouble qflist toggle<cr>" },
 }) do
 	vim.keymap.set("n", v[1], v[2], { noremap = true, silent = true })
 end

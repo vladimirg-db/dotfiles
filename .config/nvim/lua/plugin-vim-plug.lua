@@ -1,7 +1,6 @@
 vim.cmd([[
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'AlexvZyl/nordic.nvim', { 'branch': 'main' }
 Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
@@ -16,6 +15,7 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'mfussenegger/nvim-dap'
 Plug 'neovim/nvim-lspconfig'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -24,6 +24,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'scalameta/nvim-metals'
+Plug 'shaunsingh/nord.nvim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
