@@ -51,6 +51,8 @@ require("plugin-vim-plug")
 
 require("lsp")
 require("plugin-nvim-comment")
+require("plugin-nvim-dap")
+require("plugin-nvim-mason")
 require("plugin-nvim-telescope")
 require("plugin-nvim-treesitter")
 require("plugin-nvim-trouble")

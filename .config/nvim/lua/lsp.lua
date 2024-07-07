@@ -120,6 +120,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 metals_config.on_attach = function(client, bufnr)
+    require("metals").setup_dap()
+
 	omnifunc(bufnr)
 end
 

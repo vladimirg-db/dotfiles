@@ -19,10 +19,12 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'neovim/nvim-lspconfig'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-neotest/nvim-nio'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'scalameta/nvim-metals'
 Plug 'shaunsingh/nord.nvim'
 Plug 'terryma/vim-smooth-scroll'

@@ -9,10 +9,10 @@ vim.cmd([[
 
     let g:ale_fixers = {
     \    '*': ['remove_trailing_lines', 'trim_whitespace'],
-    \    'jsonnet': ['jsonnetfmt'],
-    \    'lua': ['stylua'],
-    \    'scala': ['scalafmt'],
-    \    'sql': ['sqlfluff'],
+    \    'jsonnet': ['jsonnetfmt', 'remove_trailing_lines', 'trim_whitespace'],
+    \    'lua': ['stylua', 'remove_trailing_lines', 'trim_whitespace'],
+    \    'scala': ['scalafmt', 'remove_trailing_lines', 'trim_whitespace'],
+    \    'sql': ['sqlfluff', 'remove_trailing_lines', 'trim_whitespace'],
     \}
 
     nnoremap <silent> <leader>f :ALEFix<CR>
