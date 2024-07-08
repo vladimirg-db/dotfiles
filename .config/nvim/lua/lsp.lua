@@ -93,6 +93,22 @@ require("lspconfig").typos_lsp.setup({
 local metals_config = require("metals").bare_config()
 metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+-- Override default nvim-metals root finder for deeply nested subprojects
+local Path = require("plenary.path")
+metals_config.find_root_dir = function(patterns, startpath)
+	local root_dir = nil
+	local path = Path:new(startpath)
+	for _, parent in ipairs(path:parents()) do
+		for _, pattern in ipairs(patterns) do
+			local target = Path:new(parent, pattern)
+			if target:exists() then
+				root_dir = parent
+			end
+		end
+	end
+	return root_dir
+end
+
 local function omnifunc(buf)
 	vim.bo[buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
@@ -117,7 +133,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 metals_config.on_attach = function(client, bufnr)
-    require("metals").setup_dap()
+	require("metals").setup_dap()
 
 	omnifunc(bufnr)
 end
