@@ -4,9 +4,6 @@ require("mason-lspconfig").setup()
 local cmp = require("cmp")
 
 cmp.setup({
-	completion = {
-		autocomplete = false,
-	},
 	snippet = {
 		expand = function(args)
 			vim.snippet.expand(args.body)
