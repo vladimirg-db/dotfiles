@@ -1,4 +1,4 @@
 vim.cmd([[
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gd :Gvdiff<CR>
+nnoremap <Leader>gb :Git blame<CR>
+nnoremap <Leader>gd :Git diff<CR>
 ]])
