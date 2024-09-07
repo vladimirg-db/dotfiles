@@ -19,9 +19,9 @@ vim.cmd([[
 
     nnoremap <silent> <leader>f :ALEFix<CR>
 
-    let g:ale_java_checkstyle_config = '/Users/vladimir.golubev/runtime/dev/checkstyle.xml'
-    let g:ale_scala_scalafmt_options = '--config /Users/vladimir.golubev/universe/bazel/scalafmt/scalafmt.conf'
-    let g:ale_scala_scalastyle_config = '/Users/vladimir.golubev/runtime/scalastyle-config.xml'
+    let g:ale_java_checkstyle_config = '/home/vladimir.golubev/runtime/dev/checkstyle.xml'
+    let g:ale_scala_scalafmt_options = '--config /home/vladimir.golubev/universe/bazel/scalafmt/scalafmt.conf'
+    let g:ale_scala_scalastyle_config = '/home/vladimir.golubev/runtime/scalastyle-config.xml'
     let g:ale_scala_scalastyle_options = '--warnings true'
     let g:ale_sql_pgformatter_options = '--keep-newline --maxlength 100'
 
