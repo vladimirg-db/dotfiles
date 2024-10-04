@@ -5,6 +5,7 @@ Plug 'cespare/vim-toml'
 Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'folke/trouble.nvim'
+Plug 'github/copilot.vim'
 Plug 'google/vim-jsonnet'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'
@@ -25,6 +26,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+Plug 'ray-x/sad.nvim'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'scalameta/nvim-metals'
 Plug 'shaunsingh/nord.nvim'
